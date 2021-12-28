@@ -1,0 +1,23 @@
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: fuzzy-winner
+spec:
+  containers:
+    - image: docker.io/bitnami/minio:latest
+      name: minio
+      env:
+        - name: MINIO_ACCESS_KEY
+          value: minioadmin
+        - name: MINIO_SECRET_KEY
+          value: minioadmin
+        - name: MINIO_DEFAULT_BUCKETS
+          value: default
+      ports:
+      - containerPort: 9000
+        hostPort: 9000
+        protocol: TCP
+      - containerPort: 9001
+        hostPort: 9001
+        protocol: TCP
